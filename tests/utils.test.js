@@ -10,11 +10,11 @@ const expect = chai.expect
 // ========================================================
 
 it("should say hello", function() {
-  const hello = utils.sayHello()
-  expect(hello).to.be.a("string")
-  expect(hello).to.equal("Hello")
-  expect(hello).with.lengthOf(5)
-})
+  const hello = utils.sayHello();
+  expect(hello).to.be.a("string");
+  expect(hello).to.equal("Hello");
+  expect(hello).with.lengthOf(5);
+});
 
 // ========================================================
 // Level 1 Challenges
@@ -25,9 +25,23 @@ it("should say hello", function() {
 // 4. Finally see if you would like to refactor your code at all.
 // This is called "Red-Green-Refactor"
 // ========================================================
+it("should return the area of a rectangle", function() {
+  const area = utils.area(2, 4);
+  expect(area).to.be.a("number");
+  expect(area).to.equal(8);
+});
 
+it("should return the perimeter of a rectangle", function() {
+  const perimeter = utils.perimeter(2, 4);
+  expect(perimeter).to.be.a("number");
+  expect(perimeter).to.equal(12);
+});
 
-
+it("should return the area of a circle", function() {
+  const circleArea = utils.circleArea(5);
+  expect(circleArea).to.be.a("number");
+  expect(circleArea).to.equal(78.53981633974483);
+});
 
 // ========================================================
 // Level 2 Challenges
