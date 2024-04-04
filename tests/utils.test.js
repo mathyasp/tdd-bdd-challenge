@@ -52,25 +52,53 @@ it("should return the area of a circle", function() {
 // ========================================================
 
 beforeEach((done) => {
-  utils.clearCart()
-  done()
-})
+  utils.clearCart();
+  done();
+});
 
 it("Should create a new (object) Item with name and price", function() {
-  const item = utils.createItem("apple", 0.99)
-  expect(item).to.be.a("object")
-  expect(item).to.have.property("name", "apple")
-  expect(item).to.have.property("price", 0.99)
-  expect(item).to.have.property("quantity", 1)
-})
+  const item = utils.createItem("apple", 0.99);
+  expect(item).to.be.a("object");
+  expect(item).to.have.property("name", "apple");
+  expect(item).to.have.property("price", 0.99);
+  expect(item).to.have.property("quantity", 1);
+});
 
-it("Should return an array containing all items in cart")
+it("Should return an array containing all items in cart", function() {
+  const cart = utils.getShoppingCart();
+  expect(cart).to.be.a("array");
+  expect(cart.length).to.equal(0);
+});
 
-it("Should add a new item to the shopping cart")
+it("Should add a new item to the shopping cart", function() {
+  const item = utils.createItem("apple", 0.99);
+  utils.addItemToCart(item);
+  const cart = utils.getShoppingCart();
+  expect(cart.length).to.equal(1);
+  expect(cart).to.include(item);
+});
 
-it("Should return the number of items in the cart")
+it("Should return the number of items in the cart", function() {
+  const item = utils.createItem("apple", 0.99);
+  const item2 = utils.createItem("banana", 0.59);
+  utils.addItemToCart(item);
+  utils.addItemToCart(item2);
+  const numItems = utils.getNumItemsInCart();
+  expect(numItems).to.be.a("number");
+  expect(numItems).to.equal(2);
 
-it("Should remove items from cart")
+});
+
+it("Should remove items from cart", function() {
+  const item = utils.createItem("apple", 0.99);
+  const item2 = utils.createItem("banana", 0.59);
+  utils.addItemToCart(item);
+  utils.addItemToCart(item2);
+  utils.removeItemFromCart(item);
+  const cart = utils.getShoppingCart();
+  expect(cart.length).to.equal(1);
+  expect(cart).to.not.include(item);
+});
 
 // ========================================================
 // Stretch Challenges
