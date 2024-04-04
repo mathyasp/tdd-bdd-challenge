@@ -51,8 +51,27 @@ const removeItemFromCart = (item) => {
   shoppingCart.splice(shoppingCart.indexOf(item), 1)
 }
 
+const updateItemCount = (item, n) => {
+  item.quantity = n
+}
+
+const validateEmptyCart = () => {
+  if (shoppingCart.length === 0) {
+    return "This cart has 0 items"
+  }
+  return "This cart has items"
+}
+
+const totalCost = () => {
+  let total = 0;
+  for (let item of shoppingCart) {
+    total += item.price * item.quantity;
+  }
+  return total;
+};
+
 module.exports = {
   sayHello, area, perimeter, circleArea,
   clearCart, createItem, getShoppingCart, addItemToCart,
-  getNumItemsInCart, removeItemFromCart
+  getNumItemsInCart, removeItemFromCart, updateItemCount, validateEmptyCart, totalCost
 }

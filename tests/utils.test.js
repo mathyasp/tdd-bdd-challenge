@@ -104,8 +104,25 @@ it("Should remove items from cart", function() {
 // Stretch Challenges
 // ========================================================
 
-it("Should update the count of items in the cart")
+it("Should update the count of items in the cart", function() {
+  const item = utils.createItem("apple", 0.99);
+  utils.addItemToCart(item);
+  utils.updateItemCount(item, 3);
+  expect(item.quantity).to.equal(3);
+});
 
-it("Should validate that an empty cart has 0 items")
+it("Should validate that an empty cart has 0 items", function() {
+  const emptyCart = utils.validateEmptyCart();
+  expect(emptyCart).to.be.a("string");
+  expect(emptyCart).to.equal("This cart has 0 items");
+});
 
-it("Should return the total cost of all items in the cart")
+it("Should return the total cost of all items in the cart", function() {
+  const item = utils.createItem("apple", 0.99);
+  const item2 = utils.createItem("banana", 0.59);
+  utils.addItemToCart(item);
+  utils.addItemToCart(item2);
+  const total = utils.totalCost();
+  expect(total).to.be.a("number");
+  expect(total).to.equal(1.58);
+});
